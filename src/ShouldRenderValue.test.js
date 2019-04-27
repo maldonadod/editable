@@ -2,11 +2,12 @@ import React from 'react';
 import { render } from 'react-testing-library';
 import ValueRenderer from './ValueRenderer';
 
-it('renders without crashing', () => {
+it('should render the value passed in', () => {
 
 	const value = "hello"
-	const { debug } = render(
+	const { debug, getByTestId } = render(
 		<ValueRenderer value={value} />
 	)
-	debug()
+
+	expect(getByTestId("rendered-value").textContent).toEqual(value)
 });
