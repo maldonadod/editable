@@ -36,9 +36,10 @@ test('should change value when push values into editing value', () => {
 
 	clickOnRenderedValue()
 
-	const input = "a"
+	const inputs = ["a", "", "ab", "abc"]
 
-	pushValueToEditingValue(input)
-
-	expect(editingValueContent()).toEqual(input)
+	inputs.forEach(input => {
+		pushValueToEditingValue(input)
+		expect(editingValueContent()).toEqual(input)
+	})
 });
