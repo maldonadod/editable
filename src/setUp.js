@@ -9,9 +9,12 @@ export default function setUp({value}) {
 	const renderedValue = () => queryByTestId("rendered-value")
 	const renderedValueContent = () => renderedValue().textContent
 	const clickOnRenderedValue = () => fireEvent.click(renderedValue())
-	const editingValueContent = () => queryByTestId("editing-value").textContent
+	const editingValue = () => queryByTestId("editing-value")
+	const editingValueContent = () => editingValue().value
+	const pushValueToEditingValue = (value) => fireEvent.change(editingValue(), { target: { value } })
 
 	return {
+		pushValueToEditingValue,
 		renderedValueContent,
 		editingValueContent,
 		clickOnRenderedValue,

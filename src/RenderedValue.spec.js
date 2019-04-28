@@ -24,3 +24,21 @@ test('should hide rendered value when clicks on it and show editing value', () =
 	expect(renderedValue()).toBeNull()
 	expect(editingValueContent()).toEqual(value())
 });
+
+test('should change value when push values into editing value', () => {
+
+	const value = jest.fn(() => MOCK_VALUE)
+	const {
+		clickOnRenderedValue,
+		pushValueToEditingValue,
+		editingValueContent
+	} = setUp({value})
+
+	clickOnRenderedValue()
+
+	const input = "a"
+
+	pushValueToEditingValue(input)
+
+	expect(editingValueContent()).toEqual(input)
+});
